@@ -9,10 +9,10 @@ This repository contains a Conditional Generative Adversarial Network (cGAN) tha
 - **Data Set**: Uses the MNIST data set for handwritten digits.
 - **Discriminator**: Uses Leaky ReLU activation, Binary Cross-Entropy loss, and Adam optimizer.
 - **Generator**: Utilizes dense layers, batch normalization, and Leaky ReLU activation functions.
-- **Hyperparameters**:  
-    - Batch size \(= 128\)  
-    - Epochs \(= 1000\)  
-    - Latent dimensions \(= 100\)
+- **Hyperparameters**:
+  - Batch size \(= 128\)
+  - Epochs \(= 1000\)
+  - Latent dimensions \(= 100\)
 
 ## Requirements
 
@@ -46,5 +46,3 @@ The training loop involves alternating between training the Discriminator and th
 ### Digit Generation Script
 
 Load the pre-trained generator model and use it to generate and plot handwritten digits.
-
-
