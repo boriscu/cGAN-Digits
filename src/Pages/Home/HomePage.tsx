@@ -24,8 +24,6 @@ const HomePage = () => {
     if (canvasRef.current && image) {
       const ctx = canvasRef.current.getContext("2d");
       if (ctx) {
-        canvasRef.current.width = 168;
-        canvasRef.current.height = 168;
         ctx.putImageData(image, 0, 0);
       }
     }
@@ -35,54 +33,61 @@ const HomePage = () => {
 
   const generateImage = async () => {
     if (model && input !== "") {
-      const digit = parseInt(input);
-      const noise = tf.randomNormal([1, 100]);
-      const label = tf.oneHot([digit], 10);
-
-      const generatedImage = model.predict([noise, label]) as tf.Tensor;
-
-      // Remove dimensions of size 1
-      const imageTensor = generatedImage.squeeze();
-
-      // Flatten the tensor and convert to array
-      const flatArray = Array.from(
-        await imageTensor.flatten().data()
-      ) as number[];
-
-      const uint8Array = new Uint8ClampedArray(
-        flatArray.map((x) => (x + 1) * 127.5)
-      );
-      const expandedArray = new Uint8ClampedArray(3136);
-      for (let i = 0; i < 784; i++) {
-        const value = uint8Array[i];
-        expandedArray[i * 4] = value; // R
-        expandedArray[i * 4 + 1] = value; // G
-        expandedArray[i * 4 + 2] = value; // B
-        expandedArray[i * 4 + 3] = 255; // A (opaque)
+      const numDigits = input.length;
+      const scalingFactor = 6;
+      const imageWidth = 28 * scalingFactor;
+      const gap = 0;
+      if (canvasRef.current) {
+        canvasRef.current.width = (imageWidth + gap) * numDigits;
       }
+      for (const strDigit of input.split("")) {
+        const digit = parseInt(strDigit);
+        const noise = tf.randomNormal([1, 100]);
+        const label = tf.oneHot([digit], 10);
 
-      const newImageData = new ImageData(expandedArray, 28, 28);
-      const canvas = canvasRef.current;
-      if (canvas) {
-        const ctx = canvas.getContext("2d");
-        if (ctx) {
-          const scalingFactor = 6;
-          ctx.putImageData(newImageData, lastX, 0);
+        const generatedImage = model.predict([noise, label]) as tf.Tensor;
 
-          // Assuming the image is 28x28 pixels, scale it up by scalingFactor
-          ctx.drawImage(
-            canvas,
-            lastX,
-            0,
-            28,
-            28,
-            lastX,
-            0,
-            28 * scalingFactor,
-            28 * scalingFactor
-          );
+        // Remove dimensions of size 1
+        const imageTensor = generatedImage.squeeze();
 
-          lastX += 28 * scalingFactor; // Update the lastX coordinate
+        // Flatten the tensor and convert to array
+        const flatArray = Array.from(
+          await imageTensor.flatten().data()
+        ) as number[];
+
+        const uint8Array = new Uint8ClampedArray(
+          flatArray.map((x) => (x + 1) * 127.5)
+        );
+        const expandedArray = new Uint8ClampedArray(3136);
+        for (let i = 0; i < 784; i++) {
+          const value = uint8Array[i];
+          expandedArray[i * 4] = value; // R
+          expandedArray[i * 4 + 1] = value; // G
+          expandedArray[i * 4 + 2] = value; // B
+          expandedArray[i * 4 + 3] = 255; // A (opaque)
+        }
+
+        const newImageData = new ImageData(expandedArray, 28, 28);
+        const canvas = canvasRef.current;
+        if (canvas) {
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.putImageData(newImageData, lastX, 0);
+
+            ctx.drawImage(
+              canvas,
+              lastX,
+              0,
+              28,
+              28,
+              lastX,
+              0,
+              28 * scalingFactor,
+              28 * scalingFactor
+            );
+
+            lastX += imageWidth + gap;
+          }
         }
       }
     }
