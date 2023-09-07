@@ -34,6 +34,6 @@ while True:
     img = (img + 1) / 2.0
 
     # Update the existing plot with new image data
-    ax.imshow(img[0, :, :, 0], cmap="gray")
+    ax.imshow(img.reshape(28, 28), cmap="gray")  # Modified this line
     plt.draw()
     plt.pause(0.001)
