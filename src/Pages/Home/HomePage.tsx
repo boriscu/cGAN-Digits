@@ -96,14 +96,17 @@ const HomePage = () => {
   return (
     <Grid
       container
-      height="100vh"
+      height="106vh"
       direction="column"
       alignItems="center"
       justifyContent="center"
       spacing={5}
+      sx={{ backgroundColor: "#000000" }}
     >
       <Grid item>
-        <Typography variant="h2">Digit Input to Digit Handwriting</Typography>
+        <Typography variant="h2" color="blue">
+          Digit Input to Digit Handwriting
+        </Typography>
       </Grid>
       <Grid item>
         <Grid
@@ -118,11 +121,15 @@ const HomePage = () => {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              sx={{
+                backgroundColor: "white",
+                "& .MuiFilledInput-root": { backgroundColor: "white" },
+              }}
             />
           </Grid>
           <Grid item>
             <Button
-              sx={{ color: "black", borderColor: "black" }}
+              sx={{ color: "blue", borderColor: "blue" }}
               variant="outlined"
               onClick={generateImage}
             >
