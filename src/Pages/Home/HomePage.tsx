@@ -34,7 +34,7 @@ const HomePage = () => {
   const generateImage = async () => {
     if (model && input !== "") {
       const numDigits = input.length;
-      const scalingFactor = 6;
+      const scalingFactor = 4;
       const imageWidth = 28 * scalingFactor;
       const gap = 0;
       if (canvasRef.current) {
@@ -96,15 +96,17 @@ const HomePage = () => {
   return (
     <Grid
       container
-      height="106vh"
       direction="column"
       alignItems="center"
       justifyContent="center"
       spacing={5}
-      sx={{ backgroundColor: "#000000" }}
+      sx={{
+        backgroundColor: "#f2f2f2", // Light gray background for the whole container
+        height: "100vh",
+      }}
     >
       <Grid item>
-        <Typography variant="h2" color="blue">
+        <Typography variant="h2" sx={{ color: "#0073e6" }}>
           Digit Input to Digit Handwriting
         </Typography>
       </Grid>
@@ -122,14 +124,18 @@ const HomePage = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               sx={{
-                backgroundColor: "white",
-                "& .MuiFilledInput-root": { backgroundColor: "white" },
+                backgroundColor: "#ffffff",
+                borderRadius: 5,
               }}
             />
           </Grid>
           <Grid item>
             <Button
-              sx={{ color: "blue", borderColor: "blue" }}
+              sx={{
+                color: "#0073e6",
+                borderColor: "#0073e6",
+                borderRadius: 5,
+              }}
               variant="outlined"
               onClick={generateImage}
             >
@@ -138,8 +144,35 @@ const HomePage = () => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
-        <canvas ref={canvasRef}></canvas>
+      <Grid
+        item
+        style={{
+          position: "relative",
+          width: "40vw",
+          height: "40vh",
+          top: "5%",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "40vw",
+            height: "40vh",
+            backgroundColor: "#000000", // Black background
+            zIndex: 1,
+          }}
+        ></div>
+        <canvas
+          ref={canvasRef}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 2, // Make sure the canvas appears above the div
+          }}
+        ></canvas>
       </Grid>
     </Grid>
   );
