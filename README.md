@@ -152,3 +152,8 @@ for epoch in  range(epochs):
 ```
 
 This interleaved training regimen ensures that neither the generator nor the discriminator becomes too powerful, maintaining a dynamic equilibrium where both are continually improving—akin to an ongoing duel between a forger and a detective, each honing their skills over time.
+## Training Journey
+The following sequence of images showcases the evolution of GAN. As the epochs progress, observe the remarkable improvement in the quality of the generated numbers.
+![](https://github.com/boriscu/cGAN-Digits/blob/main/public/Images_Through_Epochs.png)
+After diving deep into the training process of our GAN model, it's time to put its craftsmanship to the ultimate test: a side-by-side comparison with real handwritten digits. The following set of images presents a compelling contrast between genuine samples from the MNIST dataset and their artificially generated counterparts.
+![]()
