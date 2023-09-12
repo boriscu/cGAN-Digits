@@ -16,7 +16,7 @@ This repository contains a Conditional Generative Adversarial Network (cGAN) tha
 
 - Batch size \(= 128\)
 
-- Epochs \(= 1000\)
+- Epochs \(= 10000\)
 
 - Latent dimensions \(= 100\)
 
