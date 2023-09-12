@@ -170,6 +170,12 @@ After diving deep into the training process of our GAN model, it's time to put i
 
 Our first plot vividly encapsulates the tug-of-war between the generator and the discriminator over the course of training. Initially, we observe that both the generator (G Loss) and discriminator (D Loss) losses are quite volatile, a common phase where both are adapting to each other's tactics. As epochs progress, we notice the losses stabilize, indicating that the discriminator is becoming more adept at identifying fakes, while the generator is getting better at producing more convincing images. The convergence of these losses signifies a well-balanced adversarial game, much like a forger and detective each improving their craft in lockstep.
 
+#### Discriminator Accuracy
+
+![](https://github.com/boriscu/cGAN-Digits/blob/main/public/Plots2.png)
+
+The second plot showcases the discriminator's accuracy over time. If the accuracy approaches either 0% or 100%, it's often a sign that our GAN might not be training well. A well-trained discriminator should have an accuracy around 50%, indicative of its uncertainty in distinguishing real from fake, thus ensuring a healthy, competitive environment for the generator to improve.
+
 ## Future Work
 1. Stacked GANs: Experimenting with stacking multiple GANs could potentially lead to improved performance or faster convergence.
 2. Attention Mechanisms: Incorporating attention into the GAN could focus the model on more critical parts of the image during generation.
