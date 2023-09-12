@@ -160,3 +160,9 @@ The following sequence of images showcases the evolution of GAN. As the epochs p
 After diving deep into the training process of our GAN model, it's time to put its craftsmanship to the ultimate test: a side-by-side comparison with real handwritten digits. The following set of images presents a compelling contrast between genuine samples from the MNIST dataset and their artificially generated counterparts.
 
 ![](https://github.com/boriscu/cGAN-Digits/blob/main/public/realVsFake.png)
+
+### Insights from the Plots
+
+#### Discriminator and Generator Loss
+![](https://github.com/boriscu/cGAN-Digits/blob/main/public/Plots.png)
+Our first plot vividly encapsulates the tug-of-war between the generator and the discriminator over the course of training. Initially, we observe that both the generator (G Loss) and discriminator (D Loss) losses are quite volatile, a common phase where both are adapting to each other's tactics. As epochs progress, we notice the losses stabilize, indicating that the discriminator is becoming more adept at identifying fakes, while the generator is getting better at producing more convincing images. The convergence of these losses signifies a well-balanced adversarial game, much like a forger and detective each improving their craft in lockstep.
