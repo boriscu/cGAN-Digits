@@ -3,6 +3,7 @@
 ## Introduction
 
 This repository contains a Conditional Generative Adversarial Network (cGAN) that generates handwritten digits. The cGAN network consists of a Generator and a Discriminator, both implemented using TensorFlow's Keras API.
+You can try out the demo on the link [here](https://cgan-digits.web.app/)
 
 ## Features
 
@@ -16,7 +17,7 @@ This repository contains a Conditional Generative Adversarial Network (cGAN) tha
 
 - Batch size \(= 128\)
 
-- Epochs \(= 1000\)
+- Epochs \(= 10000\)
 
 - Latent dimensions \(= 100\)
 
@@ -154,6 +155,22 @@ for epoch in  range(epochs):
 This interleaved training regimen ensures that neither the generator nor the discriminator becomes too powerful, maintaining a dynamic equilibrium where both are continually improving—akin to an ongoing duel between a forger and a detective, each honing their skills over time.
 ## Training Journey
 The following sequence of images showcases the evolution of GAN. As the epochs progress, observe the remarkable improvement in the quality of the generated numbers.
+
 ![](https://github.com/boriscu/cGAN-Digits/blob/main/public/Images_Through_Epochs.png)
+
 After diving deep into the training process of our GAN model, it's time to put its craftsmanship to the ultimate test: a side-by-side comparison with real handwritten digits. The following set of images presents a compelling contrast between genuine samples from the MNIST dataset and their artificially generated counterparts.
-![]()
+
+![](https://github.com/boriscu/cGAN-Digits/blob/main/public/realVsFake.png)
+
+### Insights from the Plots
+
+#### Discriminator and Generator Loss
+
+![](https://github.com/boriscu/cGAN-Digits/blob/main/public/Plots.png)
+
+Our first plot vividly encapsulates the tug-of-war between the generator and the discriminator over the course of training. Initially, we observe that both the generator (G Loss) and discriminator (D Loss) losses are quite volatile, a common phase where both are adapting to each other's tactics. As epochs progress, we notice the losses stabilize, indicating that the discriminator is becoming more adept at identifying fakes, while the generator is getting better at producing more convincing images. The convergence of these losses signifies a well-balanced adversarial game, much like a forger and detective each improving their craft in lockstep.
+
+## Future Work
+1. Stacked GANs: Experimenting with stacking multiple GANs could potentially lead to improved performance or faster convergence.
+2. Attention Mechanisms: Incorporating attention into the GAN could focus the model on more critical parts of the image during generation.
+3. Conditional GANs for Different Domains: The existing architecture could be adapted for other types of data, like text.
