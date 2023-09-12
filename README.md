@@ -3,6 +3,7 @@
 ## Introduction
 
 This repository contains a Conditional Generative Adversarial Network (cGAN) that generates handwritten digits. The cGAN network consists of a Generator and a Discriminator, both implemented using TensorFlow's Keras API.
+You can try out the demo on the link [here](https://cgan-digits.web.app/)
 
 ## Features
 
