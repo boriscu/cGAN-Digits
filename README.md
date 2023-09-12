@@ -29,25 +29,6 @@ This repository contains a Conditional Generative Adversarial Network (cGAN) tha
 
 ## Code Structure
 
-### Hyperparameters
-
-batch_size = 128
-epochs = 1000
-latent_dim = 100
-
-### Generator
-
-- Takes a noise vector (shape: \(100, 1\)) and a label (shape: \(10, 1\)).
-- Outputs a generated image (shape: \(784, 1\)).
-
-### Discriminator
-
-- Takes a real/generated image (shape: \(784, 1\)) and a label (shape: \(10, 1\)).
-
-- Outputs a validity score between 0 and 1.
-
-## Explorative Analysis
-
 GAN's can be explained as the contest between a forger and a detective. In this narrative, the forger's goal is to create counterfeit banknotes so convincing that they are indistinguishable from real ones. The detective's mission, on the other hand, is to identify these fakes from the real deal.
 
 In the GAN architecture, the generator plays the role of the forger, while the discriminator acts as the detective. Both engage in an iterative learning process: the generator strives to produce more convincing "fakes," while the discriminator endeavors to get better at distinguishing them from real data. Over time, the generator gets so good at its task that the discriminator finds it increasingly difficult to tell real from fake, leading to a well-trained GAN.
